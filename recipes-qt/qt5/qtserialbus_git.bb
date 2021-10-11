@@ -12,3 +12,5 @@ LIC_FILES_CHKSUM = " \
 DEPENDS += "qtbase qtserialport"
 
 SRCREV = "76a08e3d59a0ef7020464d73df6dd5a01e58c230"
+
+SRC_URI += "file://0001-fix-compiler-error-due-to-missing-header.patch"

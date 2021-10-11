@@ -18,7 +18,7 @@ SRC_URI += "\
     file://0001-PlatformQt.cmake-Do-not-generate-hardcoded-include-p.patch \
 "
 
-inherit cmake_qt5 perlnative
+inherit cmake_qt5 perlnative pythonnative
 
 # qemuarm build fails with:
 # | {standard input}: Assembler messages:
@@ -45,6 +45,7 @@ EXTRA_OECMAKE += " \
     -DCROSS_COMPILE=ON \
     -DECM_MKSPECS_INSTALL_DIR=${libdir}${QT_DIR_NAME}/mkspecs/modules \
     -DQML_INSTALL_DIR=${OE_QMAKE_PATH_QML} \
+    -DPYTHON_EXECUTABLE=$(which python) \
 "
 
 EXTRA_OECMAKE_append_toolchain-clang = " -DCMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES:PATH='${STAGING_INCDIR}'"

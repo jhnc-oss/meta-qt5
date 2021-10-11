@@ -1,0 +1,24 @@
+From 5b3bc75d33e5ddda4f32e23d22e90211ceec42f3 Mon Sep 17 00:00:00 2001
+From: Sebastian Trahm <basti@schleifi.com>
+Date: Fri, 11 Oct 2021 12:57:36 +0000
+Subject: [PATCH] fix compiler error due to missing header
+
+Upstream-Status: Pending
+
+Signed-off-by: Sebastian Trahm <basti@schleifi.com>
+---
+ src/plugins/canbus/socketcan/socketcanbackend.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/plugins/canbus/socketcan/socketcanbackend.cpp b/src/plugins/canbus/socketcan/socketcanbackend.cpp
+index 74b0d1d..a2da146 100644
+--- a/src/plugins/canbus/socketcan/socketcanbackend.cpp
++++ b/src/plugins/canbus/socketcan/socketcanbackend.cpp
+@@ -45,6 +45,7 @@
+ 
+ #include <linux/can/error.h>
+ #include <linux/can/raw.h>
++#include <linux/sockios.h>
+ #include <errno.h>
+ #include <unistd.h>
+ #include <net/if.h>

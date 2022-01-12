@@ -1,0 +1,52 @@
+From bd4e4c76c9eda8a9b7c9f543daac98690d132db7 Mon Sep 17 00:00:00 2001
+From: Sebastian Trahm <basti@schleifi.com>
+Date: Wed, 12 Jan 2022 13:34:45 +0000
+Subject: [PATCH] include <limits> header
+
+GCC on newer HOST OS (FC34) fails to compile qtbase-native with:
+ error: ‘numeric_limits’ is not a member of ‘std’
+
+Upstream-Status: Denied
+Signed-off-by: Sebastian Trahm <basti@schleifi.com>
+---
+ src/corelib/global/qendian.h          | 1 +
+ src/corelib/tools/qbytearraymatcher.h | 1 +
+ src/tools/moc/generator.h             | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/src/corelib/global/qendian.h b/src/corelib/global/qendian.h
+index 615f523888..6258423e98 100644
+--- a/src/corelib/global/qendian.h
++++ b/src/corelib/global/qendian.h
+@@ -47,6 +47,7 @@
+ // include stdlib.h and hope that it defines __GLIBC__ for glibc-based systems
+ #include <stdlib.h>
+ #include <string.h>
++#include <limits>
+ 
+ #ifdef min // MSVC
+ #undef min
+diff --git a/src/corelib/tools/qbytearraymatcher.h b/src/corelib/tools/qbytearraymatcher.h
+index dafaea9c12..fd9038dcc6 100644
+--- a/src/corelib/tools/qbytearraymatcher.h
++++ b/src/corelib/tools/qbytearraymatcher.h
+@@ -40,6 +40,7 @@
+ #ifndef QBYTEARRAYMATCHER_H
+ #define QBYTEARRAYMATCHER_H
+ 
++#include <limits>
+ #include <QtCore/qbytearray.h>
+ 
+ QT_BEGIN_NAMESPACE
+diff --git a/src/tools/moc/generator.h b/src/tools/moc/generator.h
+index 134166580b..2d8a6b54ad 100644
+--- a/src/tools/moc/generator.h
++++ b/src/tools/moc/generator.h
+@@ -29,6 +29,7 @@
+ #ifndef GENERATOR_H
+ #define GENERATOR_H
+ 
++#include <limits>
+ #include "moc.h"
+ 
+ QT_BEGIN_NAMESPACE

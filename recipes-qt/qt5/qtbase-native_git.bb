@@ -49,6 +49,7 @@ SRC_URI += " \
 # only for qtbase-native
 SRC_URI += " \
     file://0019-Bootstrap-without-linkat-feature.patch \
+    file://0020-Fix-error-numeric_limits-is-not-a-member-of-std.patch \
 "
 
 CLEANBROKEN = "1"

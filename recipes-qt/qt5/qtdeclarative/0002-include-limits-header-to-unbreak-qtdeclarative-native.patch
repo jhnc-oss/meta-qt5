@@ -1,0 +1,37 @@
+From 1601207d62d7d89b464f3587cd5cb635a83cf499 Mon Sep 17 00:00:00 2001
+From: h5b <h5b@users.noreply.github.com>
+Date: Wed, 6 Jul 2022 11:41:41 +0000
+Subject: [PATCH] include limits header to unbreak qtdeclarative-native
+
+needed to address:
+error: ':max' / 'numeric_limits' is not a member of 'std'
+
+---
+ src/qml/jsruntime/qv4propertykey_p.h | 1 +
+ src/qmldebug/qqmlprofilerevent_p.h   | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/qml/jsruntime/qv4propertykey_p.h b/src/qml/jsruntime/qv4propertykey_p.h
+index 47867765db..c945b27498 100644
+--- a/src/qml/jsruntime/qv4propertykey_p.h
++++ b/src/qml/jsruntime/qv4propertykey_p.h
+@@ -50,6 +50,7 @@
+ // We mean it.
+ //
+ 
++#include <limits>
+ #include <private/qv4global_p.h>
+ 
+ QT_BEGIN_NAMESPACE
+diff --git a/src/qmldebug/qqmlprofilerevent_p.h b/src/qmldebug/qqmlprofilerevent_p.h
+index 1e205d8dbb..898c187b91 100644
+--- a/src/qmldebug/qqmlprofilerevent_p.h
++++ b/src/qmldebug/qqmlprofilerevent_p.h
+@@ -48,6 +48,7 @@
+ #include <QtCore/qmetatype.h>
+ 
+ #include <initializer_list>
++#include <limits>
+ #include <type_traits>
+ 
+ //
